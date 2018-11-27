@@ -1,4 +1,5 @@
 <h1>My Tasks</h1>
+
 <ul>
   <% @Tasks.each do |task| %>
   <% if task.completed %>
@@ -6,6 +7,10 @@
   <%else %>
     <li><i class="far fa-square"></i>
   <% end %>
-  <%= task.title %></li>
+  <%= link_to task.title, task_path(task) %>
+  </li>
+  <%= link_to "delete", destroy_path(task.id), method: :delete %>
   <% end %>
 </ul>
+
+<%= link_to "Add a new task", new_path %>
